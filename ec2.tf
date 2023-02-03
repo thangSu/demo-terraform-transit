@@ -113,7 +113,7 @@ resource "aws_instance" "instance1" {
     subnet_id =  aws_subnet.subnet["App VPC - AZ1"].id
     vpc_security_group_ids = [ aws_security_group.sg.id ]
     associate_public_ip_address = true
-    key_name = "thang_hey"
+    key_name = "thangpham"
     iam_instance_profile = aws_iam_instance_profile.nana.name
     tags = {
       "Name" = "server A ${count.index}"
@@ -126,7 +126,7 @@ resource "aws_instance" "instance2" {
     subnet_id =  aws_subnet.subnet["Egress VPC - AZ1"].id
     vpc_security_group_ids = [ aws_security_group.sg2.id ]
     associate_public_ip_address = true
-    key_name = "thang_hey"
+    key_name = "thangpham"
     iam_instance_profile = aws_iam_instance_profile.nana.name
     tags = {
       "Name" = "Bastion host"
@@ -138,7 +138,7 @@ resource "aws_instance" "instance3" {
     subnet_id =  aws_subnet.subnet["Egress VPC - AZ2"].id
     vpc_security_group_ids = [ aws_security_group.sg2.id ]
     associate_public_ip_address = true
-    key_name = "thang_hey"
+    key_name = "thangpham"
     iam_instance_profile = aws_iam_instance_profile.nana.name
     tags = {
       "Name" = "Private host"
