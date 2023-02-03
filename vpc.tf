@@ -95,6 +95,16 @@ resource "aws_route_table" "rtc" {
       "Name" = "Egress VPC Route Table"
     }
 }
+resource "aws_ec2_transit_gateway_route_table" "association_default_route_table" {
+  transit_gateway_id = aws_ec2_transit_gateway.transit.id
+}
+
+# TGW Route Table
+resource "aws_ec2_transit_gateway_route" "tgw_default_route" {
+  destination_cidr_block         = "0.0.0.0/0"
+  transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.tgva3.id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway.tgw.association_default_route_table_id
+}
 resource "aws_route_table" "rt_nat" {
   vpc_id = aws_vpc.vpc["Egress VPC"].id
   route{
